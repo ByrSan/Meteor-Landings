@@ -1,9 +1,9 @@
 
 
 
-/Users/dean/Desktop/meteor-landing/ReadmeImages/Screenshot 2020-12-01 at 04.07.29.png
 
-/Users/dean/Desktop/meteor-landing/ReadmeImages/soring-by-size.png
+
+
 
 A simple Application that uses the NASA API to load all the meteor landings since 1900 built using React, JavaScript, CSS
 
