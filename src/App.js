@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar"
 import ReactTable from "./components/ui/ReactTable"
 import AppState from "./context/api/AppState"
 import "../src/styles/App.css"
+require('dotenv').config()
 
 const App = () => {
   const [meteors, setMeteors] = useState([])
