@@ -14,7 +14,18 @@
   margin: 0;
   padding: 0;
 }
-
+.location-info {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  width: 200px;
+  /* min-height: 200px; */
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #fff;
+}
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
@@ -39,10 +50,14 @@ ul {
 img {
   width: 100%;
 }
-
+.react-bs-table-sizePerPage-dropdown{
+  display: none;
+}
+.react
 /* Utilities */
 .container {
-  max-width: 1100px;
+  max-width: 90%;
+  height: 100%;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
@@ -226,6 +241,7 @@ img {
   margin-right: 0.2rem;
 }
 
+
 .badge {
   display: inline-block;
   font-size: 0.8rem;
@@ -396,11 +412,19 @@ table tr:hover{
 table th{
   text-align: center;
 }
+.table .table-bordered{
+  font-size: 1rem;
+}
+
 
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {
     display: none;
+  }
+
+  .navbar h1{
+    font-size: 1.5rem;
   }
 
   .grid-2,
@@ -478,15 +502,15 @@ body {
 }
 
 .location-info {
-  position: relative;
-  top: 80px;
-  right: 50px;
+  position: absolute;
+  top: 50px;
+  right: 20px;
   width: 200px;
-  min-height: 200px;
+  /* min-height: 200px; */
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  font-size: 18px;
+  font-size: .8rem;
   color: #fff;
 }
 
@@ -508,6 +532,10 @@ table thead .caret {
   border-top: 4px solid \9;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
+ }
+ 
+ .table-bordered td, .table-bordered th{
+   font-size: .8rem;
  }
  
  table thead .dropup .caret,

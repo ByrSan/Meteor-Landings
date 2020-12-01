@@ -7,10 +7,10 @@ import {Modal, Button} from 'react-bootstrap'
 import Map from '../layout/Map'
 import AppContext from '../../context/api/AppContext'
 import Spinner from '../layout/Spinner'
-
-
 import moment from "moment"
-// import { Modal } from "@material-ui/core"
+
+
+
 
 const ReactTable = () => {
 
@@ -30,7 +30,7 @@ const ReactTable = () => {
   const getMeteors = async () => {
     try {
       const result = await axios(
-        `https://data.nasa.gov/resource/gh4g-9sfh.json?$$app_token=${process.env.REACT_APP_NASA_TOKEN}&$where=year between '1900-01-01T00:00:00.000' and '2020-01-01T00:00:00.000'&$limit=50000&$order=mass DESC`
+        `https://data.nasa.gov/resource/gh4g-9sfh.json?$$app_token=${process.env.REACT_APP_NASA_TOKEN}&$where=year between '1900-01-01T00:00:00.000' and '2020-01-01T00:00:00.000'&$limit=50000&$order=year ASC`
         )
       setMeteors(result.data)
     } catch (error) {
@@ -43,13 +43,7 @@ const ReactTable = () => {
 
 
   const columns = [
-    { dataField: "name", text: "Name" ,  sort: true, sortCaret: (order, column) => {
-      if (!order) return (<span>Desc/Asc</span>);
-      else if (order === 'asc') return (<span>&nbsp;&nbsp;Desc/<font color="red">Asc</font></span>);
-      else if (order === 'desc') return (<span>&nbsp;&nbsp;<font color="red">Desc</font>/Asc</span>);
-      return null;
-    }
-  },
+    { dataField: "name", text: "Name" ,  sort: true},
     { dataField: "year", text: "Year", sort: true, formatter: (cell) => {
       let dateObj = cell;
       if (typeof cell !== 'object') {
@@ -60,7 +54,7 @@ const ReactTable = () => {
     editor: {
       type: Type.DATE
     }},
-    { dataField: "mass", text: "Size"},
+    { dataField: "mass", text: "Size",  sort: true},
     { dataField: "recclass", text: "Composition" },
     { dataField: "reclat", text: "Latitude", hidden: true },
     { dataField: "reclong", text: "Longditude", hidden: true },
@@ -123,7 +117,7 @@ const ReactTable = () => {
     )
   }
   return (
-    <div className="">
+    <div >
       {/* <h1>Pagination</h1> */}
       <BootStrapTable 
         keyField="name"
@@ -131,6 +125,8 @@ const ReactTable = () => {
         columns={columns}
         pagination={paginationFactory()}
         rowEvents={rowEvents}
+        hideSizePerPage= {true}
+
       />
     {show ? <ModalContent/> :null}
     </div>

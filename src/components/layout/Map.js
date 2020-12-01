@@ -1,9 +1,10 @@
-import GoogleMapReact from "google-map-react"
+import React, {Fragment, useState} from 'react'
+import GoogleMapReact, {Popup} from "google-map-react"
 import { Icon } from "@iconify/react"
 import locationIcon from "@iconify/icons-mdi/map-marker"
-import { Modal, Button } from "react-bootstrap"
-
+import LocationInfoBox from './LocationInfoBox'
 const Map = ({ modalInfo }) => {
+  const [locationInfo, setLocationInfo] = useState(null)
   const center = {
     lat: parseFloat(modalInfo.reclat),
     lng: parseFloat(modalInfo.reclong),
@@ -16,7 +17,7 @@ const Map = ({ modalInfo }) => {
       </div>
     )
   }
-
+  console.log(modalInfo.mass)
   const style = {
     width: "100%",
     height: "50vh",
@@ -39,6 +40,7 @@ const Map = ({ modalInfo }) => {
   return (
     <div className="map">
       {showMap ? (
+        <Fragment>
         <GoogleMapReact
           options={style}
           style={style}
@@ -46,11 +48,17 @@ const Map = ({ modalInfo }) => {
           defaultCenter={center}
           defaultZoom={8}
         >
-          <LocationMarker lat={center.lat} lng={center.lng} />
+          <LocationMarker lat={center.lat} lng={center.lng} onClick={ () => setLocationInfo({name: modalInfo.name, year: modalInfo.year, reclass: modalInfo.reclass})}/>
+
+
         </GoogleMapReact>
+        <LocationInfoBox modalInfo={modalInfo}/>
+</Fragment>
       ) : (
         <h1>No Map Available</h1>
       )}
+     
+
     </div>
   )
 }
