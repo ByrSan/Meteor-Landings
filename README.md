@@ -2,7 +2,7 @@
 
 
 
-
+https://github.com/ByrSan/Meteor-Landings/blob/master/ReadmeImages/showing-map.png
 
 
 A simple Application that uses the NASA API to load all the meteor landings since 1900 built using React, JavaScript, CSS
